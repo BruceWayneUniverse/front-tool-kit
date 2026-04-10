@@ -1,0 +1,91 @@
+<h2>Popup 布局方案</h2>
+<p class="subtitle">3 个工具如何在弹窗中导航？</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #ddd;border-radius:6px;overflow:hidden;font-size:12px;">
+        <div style="background:#1a73e8;color:white;padding:8px 12px;display:flex;gap:4px;">
+          <span style="padding:4px 10px;background:rgba(255,255,255,0.3);border-radius:4px;">时间戳</span>
+          <span style="padding:4px 10px;border-radius:4px;">JSON</span>
+          <span style="padding:4px 10px;border-radius:4px;">计算器</span>
+        </div>
+        <div style="padding:12px;background:#fff;">
+          <div style="margin-bottom:8px;font-weight:bold;color:#333;">时间戳转换</div>
+          <div style="background:#f5f5f5;border-radius:4px;padding:8px;margin-bottom:6px;color:#666;">1712620800</div>
+          <div style="display:flex;gap:6px;margin-bottom:6px;">
+            <span style="background:#e8f0fe;color:#1a73e8;padding:3px 8px;border-radius:4px;">→ 日期</span>
+            <span style="background:#e8f0fe;color:#1a73e8;padding:3px 8px;border-radius:4px;">→ 时间戳</span>
+          </div>
+          <div style="background:#f5f5f5;border-radius:4px;padding:8px;color:#333;">2024-04-09 12:00:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 顶部 Tab 切换</h3>
+      <p>三个 tab 横排，点击切换工具内容区。最常见的多工具布局，直观高效。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #ddd;border-radius:6px;overflow:hidden;font-size:12px;display:flex;">
+        <div style="background:#f8f9fa;width:60px;padding:8px 0;border-right:1px solid #eee;display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="padding:8px;background:#e8f0fe;border-radius:8px;color:#1a73e8;text-align:center;width:40px;">
+            <div style="font-size:16px;">🕐</div>
+            <div style="font-size:9px;margin-top:2px;">时间</div>
+          </div>
+          <div style="padding:8px;border-radius:8px;color:#666;text-align:center;width:40px;">
+            <div style="font-size:16px;">{ }</div>
+            <div style="font-size:9px;margin-top:2px;">JSON</div>
+          </div>
+          <div style="padding:8px;border-radius:8px;color:#666;text-align:center;width:40px;">
+            <div style="font-size:16px;">🔢</div>
+            <div style="font-size:9px;margin-top:2px;">计算</div>
+          </div>
+        </div>
+        <div style="padding:12px;background:#fff;flex:1;">
+          <div style="margin-bottom:8px;font-weight:bold;color:#333;">时间戳转换</div>
+          <div style="background:#f5f5f5;border-radius:4px;padding:8px;margin-bottom:6px;color:#666;">1712620800</div>
+          <div style="display:flex;gap:6px;margin-bottom:6px;">
+            <span style="background:#e8f0fe;color:#1a73e8;padding:3px 8px;border-radius:4px;">→ 日期</span>
+          </div>
+          <div style="background:#f5f5f5;border-radius:4px;padding:8px;color:#333;">2024-04-09 12:00:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 左侧图标导航</h3>
+      <p>左侧固定图标栏，右侧为工具内容。图标导航更紧凑，内容区更宽。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #ddd;border-radius:6px;overflow:hidden;font-size:12px;">
+        <div style="background:#1a73e8;color:white;padding:10px 12px;font-weight:bold;">🛠 前端工具箱</div>
+        <div style="padding:12px;background:#fff;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#e8f0fe;border-radius:8px;padding:12px;text-align:center;cursor:pointer;">
+            <div style="font-size:20px;">🕐</div>
+            <div style="color:#1a73e8;font-weight:bold;margin-top:4px;">时间戳</div>
+            <div style="color:#666;font-size:10px;">Unix ↔ 日期</div>
+          </div>
+          <div style="background:#fce8e6;border-radius:8px;padding:12px;text-align:center;cursor:pointer;">
+            <div style="font-size:20px;">{ }</div>
+            <div style="color:#d93025;font-weight:bold;margin-top:4px;">JSON 解析</div>
+            <div style="color:#666;font-size:10px;">格式化 · 验证</div>
+          </div>
+          <div style="background:#e6f4ea;border-radius:8px;padding:12px;text-align:center;cursor:pointer;grid-column:1/-1;">
+            <div style="font-size:20px;">🔢</div>
+            <div style="color:#137333;font-weight:bold;margin-top:4px;">计算器</div>
+            <div style="color:#666;font-size:10px;">表达式计算</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 首页卡片 + 工具详情</h3>
+      <p>打开时显示工具卡片列表，点击进入对应工具。类似 App 主屏，适合工具数量后续增多。</p>
+    </div>
+  </div>
+</div>

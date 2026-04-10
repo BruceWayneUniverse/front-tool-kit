@@ -1,0 +1,6 @@
+{"type":"server-started","port":60655,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:60655","screen_dir":"/Users/qudongjie/go/src/github.com/BruceWayneUniverse/front-tool-kit/.superpowers/brainstorm/63201-1775722955/content","state_dir":"/Users/qudongjie/go/src/github.com/BruceWayneUniverse/front-tool-kit/.superpowers/brainstorm/63201-1775722955/state"}
+{"type":"screen-added","file":"/Users/qudongjie/go/src/github.com/BruceWayneUniverse/front-tool-kit/.superpowers/brainstorm/63201-1775722955/content/layout.html"}
+{"source":"user-event","type":"click","text":"时间戳\n          JSON\n          计算器\n        \n        \n          时间戳转换\n          1712620800\n          \n            → 日期\n            → 时间戳\n          \n          2024-04-09 12:00:00\n        \n      \n    \n    \n      A. 顶部 Tab 切换\n      三个 tab 横排，点击切换工具内容区。最常见的多工具布局，直观高效。","choice":"a","id":null,"timestamp":1775723347079}
+{"type":"screen-added","file":"/Users/qudongjie/go/src/github.com/BruceWayneUniverse/front-tool-kit/.superpowers/brainstorm/63201-1775722955/content/theme.html"}
+{"type":"screen-added","file":"/Users/qudongjie/go/src/github.com/BruceWayneUniverse/front-tool-kit/.superpowers/brainstorm/63201-1775722955/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Front Tool Kit</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="timestamp">时间戳</button>
+      <button class="tab-btn" data-tab="json">JSON</button>
+      <button class="tab-btn" data-tab="calculator">计算器</button>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- ── Timestamp Tool ── -->
+      <div id="tab-timestamp" class="tab-panel active">
+
+        <!-- Unit + Timezone row -->
+        <div class="ts-top-row">
+          <div class="ts-unit-bar">
+            <button class="ts-unit-btn" data-unit="s">秒</button>
+            <button class="ts-unit-btn active" data-unit="ms">毫秒</button>
+          </div>
+          <select id="ts-timezone">
+            <option value="Asia/Shanghai">北京 utc+8</option>
+            <option value="UTC">UTC utc+0</option>
+            <option value="America/New_York">纽约 utc-5</option>
+            <option value="Europe/London">伦敦 utc+0</option>
+          </select>
+        </div>
+
+        <!-- Date → Timestamp -->
+        <div class="ts-conv-section">
+          <div class="ts-conv-label">日期 → <span id="ts-tz-label1">（北京 utc+8）</span>时间戳:</div>
+          <div class="ts-conv-row">
+            <input type="text" id="ts-date-input" placeholder="请输入日期" />
+            <span id="ts-date-result" class="ts-conv-result">-</span>
+            <button class="btn-copy ts-copy-btn" id="ts-date-copy-btn" style="display:none">复制</button>
+          </div>
+        </div>
+
+        <!-- Timestamp → Date -->
+        <div class="ts-conv-section">
+          <div class="ts-conv-label">时间戳 → <span id="ts-tz-label2">（北京 utc+8）</span>日期:</div>
+          <div class="ts-conv-row">
+            <input type="text" id="ts-stamp-input" placeholder="请输入时间戳" />
+            <span id="ts-stamp-result" class="ts-conv-result">-</span>
+            <button class="btn-copy ts-copy-btn" id="ts-stamp-copy-btn" style="display:none">复制</button>
+          </div>
+        </div>
+
+        <!-- Current timestamp -->
+        <div class="ts-current-section">
+          <div class="ts-current-left">
+            <div class="ts-conv-label">当前时间戳:</div>
+            <div class="ts-current-row">
+              <span id="ts-current-value" class="ts-current-value">—</span>
+              <button class="btn-copy ts-copy-btn" id="ts-current-copy-btn">复制</button>
+            </div>
+          </div>
+          <div class="ts-current-btns">
+            <button class="btn btn-secondary ts-small-btn" id="ts-toggle-btn">⏸ 暂停</button>
+            <button class="btn btn-secondary ts-small-btn" id="ts-reset-btn">🔒 重置数据</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── JSON Tool ── -->
+      <div id="tab-json" class="tab-panel hidden">
+        <div class="json-input-section">
+          <div class="label">输入</div>
+          <textarea id="json-input" rows="8" placeholder="粘贴 JSON，自动格式化…"></textarea>
+          <div id="json-error" class="error-msg"></div>
+        </div>
+        <div class="json-btn-row">
+          <button class="btn btn-primary" id="json-prettify-btn">格式化</button>
+          <button class="btn btn-secondary" id="json-minify-btn">压缩</button>
+          <button class="btn btn-secondary" id="json-unescape-btn">去转义</button>
+          <div style="flex:1"></div>
+          <button class="btn-copy" id="json-copy-btn">复制</button>
+        </div>
+        <div class="json-output-section">
+          <pre id="json-output" class="json-output-pre"></pre>
+        </div>
+      </div>
+
+      <!-- ── Calculator Tool ── -->
+      <div id="tab-calculator" class="tab-panel hidden">
+        <div class="section">
+          <div class="row">
+            <input type="text" id="calc-input" placeholder="输入表达式，如 2+2, sqrt(16), sin(pi/2)" style="flex:1" />
+            <button class="btn btn-primary" id="calc-eval-btn">=</button>
+          </div>
+          <div id="calc-error" class="error-msg"></div>
+        </div>
+        <div id="calc-result" class="calc-result hidden"></div>
+        <div class="section">
+          <div class="label">历史记录</div>
+          <div id="calc-history" class="history-list"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Libraries -->
+    <script src="libs/dayjs.min.js"></script>
+    <script src="libs/dayjs-plugin-utc.js"></script>
+    <script src="libs/dayjs-plugin-timezone.js"></script>
+    <script src="libs/math.min.js"></script>
+
+    <!-- App scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/timestamp.js"></script>
+    <script src="js/json-tool.js"></script>
+    <script src="js/calculator.js"></script>
+  </body>
+</html>

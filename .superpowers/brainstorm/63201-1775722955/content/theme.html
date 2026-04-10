@@ -1,0 +1,88 @@
+<h2>视觉风格</h2>
+<p class="subtitle">选择整体配色方向</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #ddd;border-radius:8px;overflow:hidden;font-size:12px;">
+        <div style="background:#2563eb;color:white;padding:10px 12px;">
+          <div style="font-weight:bold;margin-bottom:6px;">🛠 DevTools</div>
+          <div style="display:flex;gap:4px;">
+            <span style="padding:4px 12px;background:rgba(255,255,255,0.25);border-radius:4px;font-size:11px;">时间戳</span>
+            <span style="padding:4px 12px;border-radius:4px;font-size:11px;opacity:0.8;">JSON</span>
+            <span style="padding:4px 12px;border-radius:4px;font-size:11px;opacity:0.8;">计算器</span>
+          </div>
+        </div>
+        <div style="padding:12px;background:#ffffff;">
+          <div style="color:#374151;font-size:11px;margin-bottom:6px;">Unix 时间戳</div>
+          <div style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:4px;padding:8px;color:#111827;margin-bottom:8px;">1712620800</div>
+          <div style="display:flex;gap:6px;margin-bottom:8px;">
+            <button style="background:#2563eb;color:white;border:none;padding:5px 12px;border-radius:4px;font-size:11px;">→ 转换</button>
+            <button style="background:#f3f4f6;color:#374151;border:1px solid #e5e7eb;padding:5px 12px;border-radius:4px;font-size:11px;">当前时间</button>
+          </div>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:4px;padding:8px;color:#166534;font-size:11px;">2024-04-09 12:00:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 专业蓝 · 浅色</h3>
+      <p>蓝色主色调，白色背景，干净专业，开发者工具常见风格。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #333;border-radius:8px;overflow:hidden;font-size:12px;">
+        <div style="background:#1e1e2e;color:#cdd6f4;padding:10px 12px;">
+          <div style="font-weight:bold;margin-bottom:6px;color:#89b4fa;">🛠 DevTools</div>
+          <div style="display:flex;gap:4px;">
+            <span style="padding:4px 12px;background:#89b4fa;color:#1e1e2e;border-radius:4px;font-size:11px;font-weight:bold;">时间戳</span>
+            <span style="padding:4px 12px;border-radius:4px;font-size:11px;color:#a6adc8;">JSON</span>
+            <span style="padding:4px 12px;border-radius:4px;font-size:11px;color:#a6adc8;">计算器</span>
+          </div>
+        </div>
+        <div style="padding:12px;background:#181825;">
+          <div style="color:#a6adc8;font-size:11px;margin-bottom:6px;">Unix 时间戳</div>
+          <div style="background:#313244;border:1px solid #45475a;border-radius:4px;padding:8px;color:#cdd6f4;margin-bottom:8px;">1712620800</div>
+          <div style="display:flex;gap:6px;margin-bottom:8px;">
+            <button style="background:#89b4fa;color:#1e1e2e;border:none;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:bold;">→ 转换</button>
+            <button style="background:#313244;color:#cdd6f4;border:1px solid #45475a;padding:5px 12px;border-radius:4px;font-size:11px;">当前时间</button>
+          </div>
+          <div style="background:#1e3a2e;border:1px solid #a6e3a1;border-radius:4px;padding:8px;color:#a6e3a1;font-size:11px;">2024-04-09 12:00:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 暗色主题</h3>
+      <p>深色背景，低眼疲劳，程序员友好，适合长时间使用。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="width:320px;margin:0 auto;border:1px solid #ddd;border-radius:8px;overflow:hidden;font-size:12px;">
+        <div style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:10px 12px;">
+          <div style="font-weight:bold;margin-bottom:6px;">🛠 DevTools</div>
+          <div style="display:flex;gap:4px;">
+            <span style="padding:4px 12px;background:rgba(255,255,255,0.3);border-radius:20px;font-size:11px;">时间戳</span>
+            <span style="padding:4px 12px;border-radius:20px;font-size:11px;opacity:0.8;">JSON</span>
+            <span style="padding:4px 12px;border-radius:20px;font-size:11px;opacity:0.8;">计算器</span>
+          </div>
+        </div>
+        <div style="padding:12px;background:#fafafa;">
+          <div style="color:#6b7280;font-size:11px;margin-bottom:6px;">Unix 时间戳</div>
+          <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px;color:#111827;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">1712620800</div>
+          <div style="display:flex;gap:6px;margin-bottom:8px;">
+            <button style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:5px 14px;border-radius:20px;font-size:11px;">→ 转换</button>
+            <button style="background:#fff;color:#6b7280;border:1px solid #e5e7eb;padding:5px 12px;border-radius:20px;font-size:11px;">当前时间</button>
+          </div>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px;color:#166534;font-size:11px;">2024-04-09 12:00:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 渐变紫 · 现代感</h3>
+      <p>紫色渐变头部，圆角胶囊按钮，视觉上更有设计感和现代感。</p>
+    </div>
+  </div>
+</div>
