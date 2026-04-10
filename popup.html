@@ -72,21 +72,35 @@
 
       <!-- ── JSON Tool ── -->
       <div id="tab-json" class="tab-panel hidden">
-        <div class="json-input-section">
-          <div class="label">输入</div>
-          <textarea id="json-input" rows="8" placeholder="粘贴 JSON，自动格式化…"></textarea>
-          <div id="json-error" class="error-msg"></div>
-        </div>
+
+        <!-- Button row - always visible -->
         <div class="json-btn-row">
           <button class="btn btn-primary" id="json-prettify-btn">格式化</button>
           <button class="btn btn-secondary" id="json-minify-btn">压缩</button>
           <button class="btn btn-secondary" id="json-unescape-btn">去转义</button>
-          <div style="flex:1"></div>
-          <button class="btn-copy" id="json-copy-btn">复制</button>
+          <button class="btn btn-secondary" id="json-history-btn">历史</button>
         </div>
-        <div class="json-output-section">
-          <pre id="json-output" class="json-output-pre"></pre>
+
+        <!-- Parse panel -->
+        <div id="json-parse-panel">
+          <div class="json-input-section">
+            <textarea id="json-input" rows="8" placeholder="粘贴 JSON，自动格式化…"></textarea>
+            <div id="json-error" class="error-msg"></div>
+          </div>
+          <div class="json-output-header">
+            <span class="label" style="margin:0">输出</span>
+            <button class="btn-copy" id="json-copy-btn">复制</button>
+          </div>
+          <div class="json-output-section">
+            <pre id="json-output" class="json-output-pre"></pre>
+          </div>
         </div>
+
+        <!-- History panel -->
+        <div id="json-history-panel" class="hidden">
+          <div id="json-history-list"></div>
+        </div>
+
       </div>
 
       <!-- ── Calculator Tool ── -->
