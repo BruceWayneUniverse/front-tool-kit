@@ -3,7 +3,7 @@
   "name": "Front Tool Kit",
   "version": "1.0.0",
   "description": "Developer utility tools: Timestamp Converter, JSON Parser, Expression Calculator",
-  "permissions": ["sidePanel"],
+  "permissions": ["sidePanel", "storage"],
   "action": {
     "default_icon": {
       "16": "icons/icon16.png",

@@ -20,6 +20,8 @@
   var timerRunning = false;
   var timerId = null;
 
+  var STORAGE_KEY = 'ts_state';
+
   // ── DOM refs ──────────────────────────────────────────────────
   var elDateInput   = document.getElementById('ts-date-input');
   var elDateResult  = document.getElementById('ts-date-result');
@@ -42,18 +44,15 @@
     return s;
   }
 
-  // Whole-second value displayed in current unit (append trailing zeros)
   function secToUnit(sec) {
     return String(Math.floor(sec)) + zeros(UNIT_ZEROS[currentUnit]);
   }
 
-  // Unit value → seconds
   function unitToSec(val) {
     var n = Number(val);
     if (!isFinite(n)) return NaN;
     var z = UNIT_ZEROS[currentUnit];
     if (z === 0) return n;
-    // Divide by 10^z
     return n / Math.pow(10, z);
   }
 
@@ -69,6 +68,18 @@
     var label = '（' + TZ_LABELS[currentTz] + '）';
     elTzLabel1.textContent = label;
     elTzLabel2.textContent = label;
+  }
+
+  // ── Persistence ───────────────────────────────────────────────
+  function saveState() {
+    chrome.storage.local.set({
+      [STORAGE_KEY]: {
+        dateInput:  elDateInput.value,
+        stampInput: elStampInput.value,
+        unit: currentUnit,
+        tz:   currentTz,
+      },
+    });
   }
 
   // ── Live current timestamp ────────────────────────────────────
@@ -92,8 +103,6 @@
   }
 
   // ── Conversions ───────────────────────────────────────────────
-
-  // Date string → timestamp in current unit
   function convertDateToStamp() {
     var raw = elDateInput.value.trim();
     if (!raw) {
@@ -114,7 +123,6 @@
     }
   }
 
-  // Timestamp in current unit → date string
   function convertStampToDate() {
     var raw = elStampInput.value.trim();
     if (!raw) {
@@ -147,6 +155,7 @@
       tick();
       convertDateToStamp();
       convertStampToDate();
+      saveState();
     });
   });
 
@@ -156,15 +165,22 @@
     updateTzLabels();
     convertDateToStamp();
     convertStampToDate();
+    saveState();
   });
 
   // ── Input listeners ───────────────────────────────────────────
-  elDateInput.addEventListener('input', convertDateToStamp);
+  elDateInput.addEventListener('input', function () {
+    convertDateToStamp();
+    saveState();
+  });
   elDateInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') convertDateToStamp();
   });
 
-  elStampInput.addEventListener('input', convertStampToDate);
+  elStampInput.addEventListener('input', function () {
+    convertStampToDate();
+    saveState();
+  });
   elStampInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') convertStampToDate();
   });
@@ -180,6 +196,7 @@
     elStampInput.value = '';
     elDateResult.textContent  = '';
     elStampResult.textContent = '';
+    saveState();
   });
 
   // ── Copy buttons ─────────────────────────────────────────────
@@ -193,7 +210,30 @@
     copyText(elCurrentVal.textContent, elCurrentCopyBtn);
   });
 
-  // ── Init ──────────────────────────────────────────────────────
-  updateTzLabels();
-  startTimer();
+  // ── Init: restore persisted state then start ──────────────────
+  chrome.storage.local.get(STORAGE_KEY, function (data) {
+    var saved = data[STORAGE_KEY];
+    if (saved) {
+      if (saved.unit && UNIT_ZEROS[saved.unit] !== undefined) {
+        currentUnit = saved.unit;
+        document.querySelectorAll('.ts-unit-btn').forEach(function (b) {
+          b.classList.toggle('active', b.dataset.unit === currentUnit);
+        });
+      }
+      if (saved.tz && TZ_LABELS[saved.tz]) {
+        currentTz = saved.tz;
+        elTimezone.value = currentTz;
+      }
+      if (saved.dateInput) {
+        elDateInput.value = saved.dateInput;
+        convertDateToStamp();
+      }
+      if (saved.stampInput) {
+        elStampInput.value = saved.stampInput;
+        convertStampToDate();
+      }
+    }
+    updateTzLabels();
+    startTimer();
+  });
 })();

@@ -11,6 +11,7 @@
       <button class="tab-btn active" data-tab="timestamp">时间戳</button>
       <button class="tab-btn" data-tab="json">JSON</button>
       <button class="tab-btn" data-tab="calculator">计算器</button>
+      <button class="mode-toggle-btn" id="mode-toggle-btn" title="切换显示模式"></button>
     </div>
 
     <!-- Content -->
@@ -55,16 +56,12 @@
 
         <!-- Current timestamp -->
         <div class="ts-current-section">
-          <div class="ts-current-left">
-            <div class="ts-conv-label">当前时间戳:</div>
-            <div class="ts-current-row">
-              <span id="ts-current-value" class="ts-current-value">—</span>
-              <button class="btn-copy ts-copy-btn" id="ts-current-copy-btn">复制</button>
-            </div>
-          </div>
-          <div class="ts-current-btns">
+          <div class="ts-conv-label">当前时间戳:</div>
+          <div class="ts-current-row">
+            <span id="ts-current-value" class="ts-current-value">—</span>
+            <button class="btn-copy ts-copy-btn" id="ts-current-copy-btn">复制</button>
             <button class="btn btn-secondary ts-small-btn" id="ts-toggle-btn">⏸ 暂停</button>
-            <button class="btn btn-secondary ts-small-btn" id="ts-reset-btn">🔒 重置数据</button>
+            <button class="btn btn-secondary ts-small-btn" id="ts-reset-btn">↺ 重置</button>
           </div>
         </div>
 
@@ -128,6 +125,7 @@
     <script src="libs/math.min.js"></script>
 
     <!-- App scripts -->
+    <script src="js/popup.js"></script>
     <script src="js/main.js"></script>
     <script src="js/timestamp.js"></script>
     <script src="js/json-tool.js"></script>

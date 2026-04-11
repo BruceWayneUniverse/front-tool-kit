@@ -5,7 +5,14 @@
   const resultDiv = document.getElementById('calc-result');
   const historyDiv = document.getElementById('calc-history');
 
-  const history = [];
+  const STORAGE_KEY = 'calc_history';
+  const MAX_HISTORY = 20;
+
+  let history = [];
+
+  function saveHistory() {
+    chrome.storage.local.set({ [STORAGE_KEY]: history });
+  }
 
   function renderHistory() {
     if (history.length === 0) {
@@ -66,9 +73,10 @@
       errorDiv.textContent = '';
 
       history.unshift({ expression: expression, result: resultStr });
-      if (history.length > 10) {
-        history.length = 10;
+      if (history.length > MAX_HISTORY) {
+        history.length = MAX_HISTORY;
       }
+      saveHistory();
       renderHistory();
     } catch (e) {
       errorDiv.textContent = 'Invalid expression';
@@ -88,5 +96,9 @@
     errorDiv.textContent = '';
   });
 
-  renderHistory();
+  // Load persisted history on startup
+  chrome.storage.local.get(STORAGE_KEY, function (data) {
+    history = data[STORAGE_KEY] || [];
+    renderHistory();
+  });
 })();

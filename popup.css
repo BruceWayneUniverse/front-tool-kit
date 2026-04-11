@@ -40,6 +40,25 @@ body {
   font-weight: 700;
 }
 
+/* ── Mode toggle button ── */
+.mode-toggle-btn {
+  margin-left: auto;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #475569;
+  white-space: nowrap;
+  align-self: center;
+  transition: background 0.15s;
+}
+
+.mode-toggle-btn:hover {
+  background: #e2e8f0;
+}
+
 /* ── Content ── */
 .content {
   padding: 12px 16px;
@@ -412,16 +431,10 @@ select:focus {
 /* Current timestamp row */
 .ts-current-section {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 6px;
   padding-top: 10px;
   border-top: 1px solid #e2e8f0;
-}
-
-.ts-current-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 .ts-current-row {
@@ -438,12 +451,15 @@ select:focus {
   white-space: nowrap;
 }
 
-.ts-current-btns {
-  display: flex;
-  gap: 8px;
+.ts-small-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.ts-small-btn {
-  padding: 6px 12px;
-  font-size: 13px;
+#ts-toggle-btn {
+  margin-left: auto;
 }
